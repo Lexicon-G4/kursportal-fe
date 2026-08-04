@@ -4,70 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kursportal Grupp Fyra</title>
-      <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-        crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-    <style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/master.css">
 
-    </style>
 </head>
 <body>
 
-    <header>
-
-        <nav class="navbar navbar-expand navbar-dark bg-dark p-2">
-                    <a class="navbar-brand p-2" href="#">Four Academy</a>
+<nav class="navbar navbar-expand navbar-dark bg-dark p-2">
+                    <a class="navbar-brand p-2" href="#">Kursportalen</a>
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item active"><a class="nav-link" href="#">Start</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Anmälningar</a></li>
-                    <li class="nav-item"><a class="nav-link disabled" href="#">Secret</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Kontakta oss</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Kurser</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Kontakt</a></li>
                 </ul>
             </div>
-        </nav>
-<div class="container justify-content-center col-6" id="title">
-        <h1>FOUR ACADEMY</h1>
+</nav>
+
+
+<div class="container justify-content-center d-flex flex-column text-center border mt-2 col-6" id="title">
+        <h1><img class="object-fit-contain border rounded" src="./img/logo2.png"></h1>
         <h2>Framtidens utbildning - idag!</h2>
     </div>
 
-    </header>
+    <section id="content" class="container-fluid my-4">
+        <div class="row g-4">
+            <aside class="col-12 col-md-3 col-lg-2">
+                <div class="p-3">
+                    <ul id="kurslista" class="nav nav-pills flex-column">
 
+                    </ul>
+                </div>
+            </aside>
+            <main class="col-12 col-md-9 col-lg-10">
+                <div class="p-4 text-center" id="hero">
+                    <h4>På Four Academy prioriterar vi studentens personliga utveckling över allt annat.</h4>
+                    <p>Vi erbjuder ett brett sortiment av kurser inom framtidens yrkesområden för att maximera din kompetens!</p>
+                    <p>Är du intresserad av att maximera din anställningsbarhet? Skriv upp dig idag och tag del av vårt utbud av högkvalitativ yrkeskompetens!</p>
+                    <p>Just nu! 5% rabatt på alla AI-kurser!</p>
+                </div>
+                <div id="kursfält" class="p-4">
 
-
-    <main>
-        <div class="container-fluid row">
-        <div id="kurslista" class="col-12 col-md-2 container-fluid column p-2 m-2 border rounded h-100">
-            <button>Ladda kurser</button>
-            <li><span>Inga kurser laddade</span></li>
+                </div>
+            </main>
         </div>
-
-        <div id="kursfält" class="col-12 col-md-8 p-2 m-2 border rounded h-100">
-            <div id="Hero">
-
-<h2>På Four Academy prioriterar vi studentens personliga utveckling över allt annat.</h2>
-<h2>Vi erbjuder ett brett sortiment av kurser inom framtidens yrkesområden för att maximera din kompetens!</h2>
-
-            </div>
-        </div>
-
-        </div>
-    </main>
-
-
-   <footer class="footer navbar-fixed-bottom mt-auto py-3 navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-
-                <a class="navbar-brand" href="#">This page @ Four Academy, all rights reserved.</a>
-            </div>
-            <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="#">Back to top</a></li>
-            </ul>
-        </div>
+    </section>
+    <footer class="bg-dark text-white p-4 d-flex justify-content-between align-items-center">
+        Kursportalen
     </footer>
 
 
