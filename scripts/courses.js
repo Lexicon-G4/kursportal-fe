@@ -30,7 +30,7 @@ export async function LoadAllCourses() {
 
   listElement.replaceChildren();
 
-  courses.forEach(course => {
+  courses.forEach((course) => {
     const linkNode = document.createElement("a");
     linkNode.classList.add("nav-link");
     linkNode.href ="#";
@@ -52,17 +52,39 @@ export async function LoadCourseDetails(id) {
 
   detailsElement.replaceChildren();
 
-  const teBadges = courseData.techniques.map(te => `<div class="teknikbadge">${te}</div>`).reduce((line, elem) => line += elem, "");
-  const taBadges = courseData.tags.map(ta => `<div class="teknikbadge">${ta}</div>`).reduce((line, elem) => line += elem, "");
+  const teBadges = courseData.techniques
+    .map((te) => `<div class="techiquesbadge">${te}</div>`)
+    .reduce((line, elem) => (line += elem), "");
+  const taBadges = courseData.tags
+    .map((ta) => `<div class="tagsbadge">${ta}</div>`)
+    .reduce((line, elem) => (line += elem), "");
+  const teacherCards = courseData.teachers
+    .map(
+      (te) =>
+        `<div class="teachercard" data-teacherId="${te.id}">
+      <div>${te.name}</div>
+      <div>${te.email}</div>
+    </div>`,
+    )
+    .reduce((line, elem) => (line += elem), "");
 
   detailsElement.innerHTML = `<div id="kursdetaljer">
     <h2 class="kurstitel">${courseData.title}</h2>
     <div class="kursbeskrivning">
       <p>${courseData.description}</p>
     </div>
-    <div class="kurslängd">${courseData.length}</div>
-    <div class="kurslärare">${courseData.teachers[0].name}</div>
-    <div class="kurstekniker">${teBadges}</div>
-    <div class="kurstaggar">${taBadges}</div>
-  </div>`
+    <div class="courselength">Kurslängd: ${courseData.length}</div>
+    <div class="courseteachers">
+      <h3>Lärare</h3>
+      <div class="teachercards">${teacherCards}</div>
+    </div>
+    <div class="coursetechniques">
+      <h3>Tekniker</h3>
+      <div class="techiguebadges">${teBadges}</div>
+    <div>
+    <div class="coursetags">
+      <h3>Tags</h3>
+      <div class="tagbadges">${taBadges}</div>
+    </div>
+  </div>`;
 }
