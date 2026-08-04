@@ -9,6 +9,9 @@ document.getElementById(kursListaElementID).addEventListener('click', async e =>
   e.preventDefault();
 
   const courseId = link.dataset.courseId;
+  document.querySelectorAll(`#${kursListaElementID} a.active`)
+    .forEach(activeLink => activeLink.classList.remove("active"));
+  link.classList.add("active");
   await LoadCourseDetails(courseId);
 })
 
