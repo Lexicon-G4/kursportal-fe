@@ -32,13 +32,15 @@ export async function LoadAllCourses() {
 
   courses.forEach(course => {
     const linkNode = document.createElement("a");
+    linkNode.classList.add("nav-link");
     linkNode.href ="#";
     linkNode.dataset.courseId = course.id;
     linkNode.innerText = course.title;
 
     const listNode = document.createElement("li");
     listNode.appendChild(linkNode);
-    listElement.appendChild(linkNode);
+    listNode.classList.add("nav-item");
+    listElement.appendChild(listNode);
   });
 }
 
