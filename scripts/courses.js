@@ -54,7 +54,7 @@ export async function LoadCourseDetails(id) {
   const taBadges = courseData.tags.map(ta => `<div class="teknikbadge">${ta}</div>`).reduce((line, elem) => line += elem, "");
 
   detailsElement.innerHTML = `<div id="kursdetaljer">
-    <h2 class="kurstitel">${courseData.titel}</h2>
+    <h2 class="kurstitel">${courseData.title}</h2>
     <div class="kursbeskrivning">
       <p>${courseData.description}</p>
     </div>
