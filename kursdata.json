@@ -1,0 +1,53 @@
+{
+    "innehåll": "Kursdata för g4",
+    "kurser": [
+        {
+            "id": "OOP101",
+            "Titel": "Introduktion till Objekt-Orienterad Programmering",
+            "Beskrivning": "En grundläggande introduktion till objekt-orienterad programmering med C# som språk och Visual Studio som arbetsmiljö.",
+            "Typ": "Programmering",
+            "Längd": 600,
+            "Taggar":
+            [
+                "Backend", "Grundläggande", "Programmering"
+            ],
+            "Tekniker":
+            [
+                "C#", "Visual Studio", "Git"
+            ],
+            "Lärare": "Michael Qvist"
+        },
+        {
+            "id": "AI504",
+            "Titel": "Avancerad AI-Applikation På Kommersiell Basis",
+            "Beskrivning": "Fördjupling i moderna LLM/AI-tekniker och deras användningsmöjligheter på kommersiell nivå.",
+            "Typ": "Administration",
+            "Längd": 400,
+            "Taggar":
+            [
+                "AI", "LLM", "Industri"
+            ],
+            "Tekniker":
+            [
+                "LLM", "Integration"
+            ],
+            "Lärare": "David Davidsson"
+        },
+        {
+            "id": "BB301",
+            "Titel": "Intermedial Brödbakning",
+            "Beskrivning": "Avancerade tekniker för bakning, försäljning och distribution av bröd på kommersiell nivå. Inspirerad av den populära thrillerserien 'Baking Bread'.",
+            "Typ": "Kommersiell",
+            "Längd": 800,
+            "Taggar":
+            [
+                "Bröd", "Bakning", "Försäljning"
+            ],
+            "Tekniker":
+            [
+                "Jäsning", "Knådning"
+            ],
+            "Lärare": "Valter Vit"
+        }
+    ]
+}

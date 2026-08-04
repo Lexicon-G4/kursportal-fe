@@ -1,0 +1,20 @@
+{
+    "Lärare": 
+    [
+        {
+            "LärarId": 1,
+            "Namn": "Michael Qvist",
+            "Email": "M.Qvist@GruppFyra.se"
+        },
+        {
+            "LärarId": 2,
+            "Namn": "David Davidsson",
+            "Email": "DD_Guy@Hotmail.com"
+        },
+        {
+            "LärarId": 3,
+            "Namn": "Valter Vit",
+            "Email": "Heisenburger@mail.com"
+        }
+    ]
+}
