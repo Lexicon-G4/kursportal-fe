@@ -1,4 +1,4 @@
-import { ServerGet } from "./api";
+import { ServerGet } from "./api.js";
 
 const basePath = "kurser";
 const listElementID = "kurslista";
@@ -22,7 +22,7 @@ export async function FetchCourse(id) {
   }
 }
 
-export function LoadAllCourses() {
+export async function LoadAllCourses() {
   const listElement = document.querySelector(`#${listElementID}`);
   const courses = await FetchAllCourses();
 
@@ -30,31 +30,33 @@ export function LoadAllCourses() {
 
   listElement.replaceChildren();
 
-  courses.array.forEach(course => {
+  courses.forEach(course => {
     const linkNode = document.createElement("a");
     linkNode.href ="#";
-    linkNode.dataset["course-id"] = course.id;
-    linkNode.innerText = course.title;
+    linkNode.dataset.courseId = course.id;
+    linkNode.innerText = course.titel;
 
     const listNode = document.createElement("li");
-    listNode.appendChild(listNode);
+    listNode.appendChild(linkNode);
+    listElement.appendChild(linkNode);
   });
 }
 
-export function LoadCourseDetails(id) {
+export async function LoadCourseDetails(id) {
   const detailsElement = document.querySelector(`#${detailsElementID}`);
-  const courseData = FetchCourse(id);
+  const courseData = await FetchCourse(id);
 
   if (!courseData) return;
 
   detailsElement.replaceChildren();
+  console.log(courseData);
 
   detailsElement.innerHTML = `<div id="kursdetaljer">
-    <h2 class="kurstitel">${course.title}</h2>
+    <h2 class="kurstitel">${courseData.titel}</h2>
     <div class="kursbeskrivning">
-      <p>${course.desription}</p>
+      <p>${courseData.beskrivning}</p>
     </div>
-    <div class="kurslärare">${course.teacher}</div>
+    <div class="kurslärare">${courseData.lärare}</div>
     <div class="kurstekniker"></div>
     <div class="kurstaggar"></div>
   </div>`
