@@ -32,13 +32,15 @@ export async function LoadAllCourses() {
 
   courses.forEach((course) => {
     const linkNode = document.createElement("a");
-    linkNode.href = "#";
+    linkNode.classList.add("nav-link");
+    linkNode.href ="#";
     linkNode.dataset.courseId = course.id;
     linkNode.innerText = course.title;
 
     const listNode = document.createElement("li");
     listNode.appendChild(linkNode);
-    listElement.appendChild(linkNode);
+    listNode.classList.add("nav-item");
+    listElement.appendChild(listNode);
   });
 }
 
@@ -66,9 +68,9 @@ export async function LoadCourseDetails(id) {
     )
     .reduce((line, elem) => (line += elem), "");
 
-  detailsElement.innerHTML = `<div id="coursedetails">
-    <h2 class="coursetitle">${courseData.titel}</h2>
-    <div class="coursedescription">
+  detailsElement.innerHTML = `<div id="kursdetaljer">
+    <h2 class="kurstitel">${courseData.title}</h2>
+    <div class="kursbeskrivning">
       <p>${courseData.description}</p>
     </div>
     <div class="courselength">Kurslängd: ${courseData.length}</div>
