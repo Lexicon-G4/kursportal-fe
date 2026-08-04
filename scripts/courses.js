@@ -49,7 +49,9 @@ export async function LoadCourseDetails(id) {
   if (!courseData) return;
 
   detailsElement.replaceChildren();
-  console.log(courseData);
+
+  const teBadges = courseData.tekniker.map(te => `<div class="teknikbadge">${te}</div>`).reduce((line, elem) => line += elem, "");
+  const taBadges = courseData.taggar.map(ta => `<div class="teknikbadge">${ta}</div>`).reduce((line, elem) => line += elem, "");
 
   detailsElement.innerHTML = `<div id="kursdetaljer">
     <h2 class="kurstitel">${courseData.titel}</h2>
@@ -57,7 +59,7 @@ export async function LoadCourseDetails(id) {
       <p>${courseData.beskrivning}</p>
     </div>
     <div class="kurslärare">${courseData.lärare}</div>
-    <div class="kurstekniker"></div>
-    <div class="kurstaggar"></div>
+    <div class="kurstekniker">${teBadges}</div>
+    <div class="kurstaggar">${taBadges}</div>
   </div>`
 }
