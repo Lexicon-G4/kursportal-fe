@@ -66,9 +66,27 @@ export async function LoadCourseDetails(id) {
   const detailsElement = document.querySelector(`#${detailsElementID}`);
   const courseData = await FetchCourse(id);
 
-  if (!courseData) return;
-
   detailsElement.replaceChildren();
+
+  if (!courseData) {
+    const reloadBtn = document.createElement("button");
+    reloadBtn.addEventListener("click", () => LoadCourseDetails(id));
+    reloadBtn.innerText = "Försök igen";
+    reloadBtn.type = "button";
+    reloadBtn.classList.add("btn", "btn-info", "mt-3");
+
+    const releaodMsg = document.createElement("p");
+    releaodMsg.innerText = `Något gick fel vid laddningen av kursen med id: ${id}`;
+
+    const reloadCtn = document.createElement("div");
+    reloadCtn.classList.add("col", "justify-content-center");
+
+    reloadCtn.appendChild(releaodMsg);
+    reloadCtn.appendChild(reloadBtn);
+
+    detailsElement.appendChild(reloadCtn);
+    return;
+  }
 
   const teBadges = courseData.techniques
     .map((te) => `<div class="techiquesbadge">${te}</div>`)
