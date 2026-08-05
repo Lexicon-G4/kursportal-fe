@@ -1,0 +1,22 @@
+        .darkbg {
+    background-color: #0f172a; /* Mörkblå bakgrund */
+    color: #f8fafc;            /* Ljus text */
+        }
+
+        .lightbg {
+            background-color: #1e293b;
+                border: 4px solid #475569;
+        }
+
+        #kurslista .nav-link {
+            background-color: #192434;
+            border: 1px solid #141a23;
+            border-radius: var(--bs-border-radius);
+            margin: 2px;
+        }
+
+        #kurslista .nav-link:hover {
+            background-color: #283b57;
+            border: 1px solid #141a23;
+            color:#bbbbff;
+        }
