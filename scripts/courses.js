@@ -60,17 +60,19 @@ export async function LoadCourseDetails(id) {
   }
 
   const teBadges = courseData.techniques
-    .map((te) => `<div class="techiquesbadge">${te}</div>`)
+    .map((te) => `<div class="badge text-bg-info">${te}</div>`)
     .reduce((line, elem) => (line += elem), "");
   const taBadges = courseData.tags
-    .map((ta) => `<div class="tagsbadge">${ta}</div>`)
+    .map((ta) => `<div class="badge text-bg-secondary">${ta}</div>`)
     .reduce((line, elem) => (line += elem), "");
   const teacherCards = courseData.teachers
     .map(
       (te) =>
-        `<div class="teachercard" data-teacherId="${te.id}">
-      <div>${te.name}</div>
-      <div>${te.email}</div>
+        `<div class="card text-bg-dark" data-teacherId="${te.id}" style="width: 18rem;">
+      <div class="card-body">
+        <div>${te.name}</div>
+        <div class="mt-1">${te.email}</div>
+      </div>
     </div>`,
     )
     .reduce((line, elem) => (line += elem), "");
