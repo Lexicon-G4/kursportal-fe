@@ -10,6 +10,7 @@
 
         #kurslista .nav-link {
             background-color: #192434;
+            color:#bbbbff;
             border: 1px solid #141a23;
             border-radius: var(--bs-border-radius);
             margin: 2px;
@@ -18,5 +19,9 @@
         #kurslista .nav-link:hover {
             background-color: #283b57;
             border: 1px solid #141a23;
+            color:#ffffff;
+        }
+
+        footer a {
             color:#bbbbff;
         }
