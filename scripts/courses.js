@@ -71,20 +71,20 @@ export async function LoadCourseDetails(id) {
 
   detailsElement.innerHTML = `
     <div class="row justify-content-center">
-      <div class="col-12 col-lg-10 col-xl-8">
+      <div class="col-12 col-lg-11 col-xl-10">
         <section id="kursdetaljer" class="py-2">
   
           <div class="mb-4">
-            <h2 class="h4 mb-2 text-center">
+            <h2 class="h4 mb-3">
               ${courseData.title}
             </h2>
   
-            <p class="text-body-secondary mb-0">
+            <p class="mb-0">
               ${courseData.description}
             </p>
           </div>
   
-          <hr class="my-4">
+          <hr class="my-4 border-white opacity-100">
   
           <div class="mb-4">
             <h3 class="h6 text-uppercase fw-bold mb-2">Kurslängd</h3>
