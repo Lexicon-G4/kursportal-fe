@@ -1,4 +1,5 @@
 import { ServerGet } from "./api.js";
+import { LoadingError } from "./utils.js";
 
 const basePath = "courses";
 const listElementID = "kurslista";
@@ -6,7 +7,7 @@ const detailsElementID = "kursfält";
 
 export async function FetchAllCourses() {
   try {
-    return ServerGet(`${basePath}`);
+    return await ServerGet(`${basePath}`);
   } catch (error) {
     console.error("Failed to fetch courses:", error);
     return [];
@@ -15,7 +16,7 @@ export async function FetchAllCourses() {
 
 export async function FetchCourse(id) {
   try {
-    return ServerGet(`${basePath}/${id}`);
+    return await ServerGet(`${basePath}/${id}`);
   } catch (error) {
     console.error(`Failed to fetch course ${id}:`, error);
     return null;
@@ -26,14 +27,17 @@ export async function LoadAllCourses() {
   const listElement = document.querySelector(`#${listElementID}`);
   const courses = await FetchAllCourses();
 
-  if (!courses) return;
-
   listElement.replaceChildren();
+
+  if (courses.length === 0) {
+    listElement.appendChild(LoadingError("Något gick fel vid hämtning av kurslistan.", () => LoadAllCourses()));
+    return;
+  }
 
   courses.forEach((course) => {
     const linkNode = document.createElement("a");
     linkNode.classList.add("nav-link");
-    linkNode.href ="#";
+    linkNode.href = "#";
     linkNode.dataset.courseId = course.id;
     linkNode.innerText = course.title;
 
@@ -48,9 +52,12 @@ export async function LoadCourseDetails(id) {
   const detailsElement = document.querySelector(`#${detailsElementID}`);
   const courseData = await FetchCourse(id);
 
-  if (!courseData) return;
-
   detailsElement.replaceChildren();
+
+  if (!courseData) {
+    detailsElement.appendChild(LoadingError(`Något gick fel vid hämtning av kurs med id: ${id}`, () => LoadCourseDetails(id)));
+    return;
+  }
 
   const teBadges = courseData.techniques
     .map((te) => `<div class="techiquesbadge">${te}</div>`)
@@ -68,50 +75,49 @@ export async function LoadCourseDetails(id) {
     )
     .reduce((line, elem) => (line += elem), "");
 
-
   detailsElement.innerHTML = `
     <div class="row justify-content-center">
       <div class="col-12 col-lg-11 col-xl-10">
         <section id="kursdetaljer" class="py-2">
-  
+
           <div class="mb-4">
             <h2 class="h4 mb-3">
               ${courseData.title}
             </h2>
-  
+
             <p class="mb-0">
               ${courseData.description}
             </p>
           </div>
-  
+
           <hr class="my-4 border-white opacity-100">
-  
+
           <div class="mb-4">
             <h3 class="h6 text-uppercase fw-bold mb-2">Kurslängd</h3>
             <p class="">${courseData.length}</p>
           </div>
-  
+
           <div class="mb-4">
             <h3 class="h6 text-uppercase fw-bold mb-3">Lärare</h3>
             <div class="row g-3">
               ${teacherCards}
             </div>
           </div>
-  
+
           <div class="mb-4">
             <h3 class="h6 text-uppercase fw-bold mb-3">Tekniker</h3>
             <div class="d-flex flex-wrap gap-2">
               ${teBadges}
             </div>
           </div>
-  
+
           <div>
             <h3 class="h6 text-uppercase fw-bold mb-3">Taggar</h3>
             <div class="d-flex flex-wrap gap-2">
               ${taBadges}
             </div>
           </div>
-  
+
         </section>
       </div>
     </div>
