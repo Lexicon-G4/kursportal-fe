@@ -1,4 +1,5 @@
 import { ServerGet } from "./api.js";
+import { LoadingError } from "./utils.js";
 
 const basePath = "courses";
 const listElementID = "kurslista";
@@ -29,22 +30,7 @@ export async function LoadAllCourses() {
   listElement.replaceChildren();
 
   if (courses.length === 0) {
-    const reloadBtn = document.createElement("button");
-    reloadBtn.addEventListener("click", () => LoadAllCourses());
-    reloadBtn.innerText = "Försök igen";
-    reloadBtn.type = "button";
-    reloadBtn.classList.add("btn", "btn-info", "mt-3");
-
-    const releaodMsg = document.createElement("p");
-    releaodMsg.innerText = "Något gick fel vid laddningen av kurser.";
-
-    const reloadCtn = document.createElement("div");
-    reloadCtn.classList.add("col", "justify-content-center");
-
-    reloadCtn.appendChild(releaodMsg);
-    reloadCtn.appendChild(reloadBtn);
-
-    listElement.appendChild(reloadCtn);
+    listElement.appendChild(LoadingError("Något gick fel vid hämtning av kurslistan.", () => LoadAllCourses()));
     return;
   }
 
@@ -69,22 +55,7 @@ export async function LoadCourseDetails(id) {
   detailsElement.replaceChildren();
 
   if (!courseData) {
-    const reloadBtn = document.createElement("button");
-    reloadBtn.addEventListener("click", () => LoadCourseDetails(id));
-    reloadBtn.innerText = "Försök igen";
-    reloadBtn.type = "button";
-    reloadBtn.classList.add("btn", "btn-info", "mt-3");
-
-    const releaodMsg = document.createElement("p");
-    releaodMsg.innerText = `Något gick fel vid laddningen av kursen med id: ${id}`;
-
-    const reloadCtn = document.createElement("div");
-    reloadCtn.classList.add("col", "justify-content-center");
-
-    reloadCtn.appendChild(releaodMsg);
-    reloadCtn.appendChild(reloadBtn);
-
-    detailsElement.appendChild(reloadCtn);
+    detailsElement.appendChild(LoadingError(`Något gick fel vid hämtning av kurs med id: ${id}`, () => LoadCourseDetails(id)));
     return;
   }
 
